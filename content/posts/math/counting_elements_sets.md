@@ -48,22 +48,11 @@ When adding $|A| + |B| + |C|$, the following happens:
 - $B \cap C - (A \cap B \cap C)$ is counted twice
 - $A \cap B \cap C$ is counted three times
 
-To compensate for the double counting, we subtract $|A \cap B|$, $|A \cap C|$ and $B \cap C$.
+To compensate for the double counting, we subtract $|A \cap B|$, $|A \cap C|$ and $B \cap C$. However, since $A \cap B \cap C$ is a subset of each of the intersections we subtracted, the elements in $A \cap B \cap C$ is not counted at all, so we need to add them back.
+$$|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|$$
 
-However, since $A \cap B \cap C$ is a subset of each of the intersections we subtracted, the elements in $A \cap B \cap C$ is not counted at all, so we need to add them back:
-
-$|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |A \cap C| - |B \cap C| + |A \cap B \cap C|$
-
----
-
-Consider how many studio albums there are by Black Sabbath that includes either Bill Ward or Ronnie James Dio (a union of two overlapping sets).
-
-Let $W$ be the set of all studio albums by Black Sabbath including Bill Ward, and let $D$ be the set of all studio albums by Black Sabbath including Ronnie James Dio.
-
-$|W| = 10$, since Bill Ward has participated on ten studio albums by Black Sabbath
-
-$|D| = 3$, since Ronnie James Dio participated on three studio albums by Black Sabbath
-
-$|W \cap D| = 1$, since both Bill Ward and Ronnie James Dio participated on the studio album *Heaven and Hell*
-
-$|W \cup D| = |W| + |D| - |W \cap D| = 10 + 3 - 1 = 12$
+Consider how many studio albums there are by Black Sabbath that includes either Bill Ward or Ronnie James Dio (a union of two overlapping sets). Let $W$ be the set of all studio albums by Black Sabbath including Bill Ward, and let $D$ be the set of all studio albums by Black Sabbath including Ronnie James Dio.
+ - $|W| = 10$, since Bill Ward has participated on ten studio albums by Black Sabbath
+ - $|D| = 3$, since Ronnie James Dio participated on three studio albums by Black Sabbath
+ - $|W \cap D| = 1$, since both Bill Ward and Ronnie James Dio participated on the studio album *Heaven and Hell*
+ - $|W \cup D| = |W| + |D| - |W \cap D| = 10 + 3 - 1 = 12$
