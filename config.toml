@@ -1,4 +1,9 @@
-baseURL = "http://example.org/"
+baseURL = ""
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = ""
 theme = "m10c"
+
+[params]
+author = "Rickard Andersson"
+avatar = "kittelsen.jpg"
+description = "I like to write code and learn maths, and sometimes write about it."
