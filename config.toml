@@ -7,3 +7,8 @@ theme = "m10c"
 author = "Rickard Andersson"
 avatar = "kittelsen.jpg"
 description = "I like to write code and learn maths, and sometimes write about it."
+
+[markup]
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            unsafe = true
