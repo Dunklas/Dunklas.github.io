@@ -35,3 +35,10 @@ $$P(A \cap B) = P(B|A) \cdot P(A)$$
 
 If we divide each side of above equality with $P(B|A)$, we get that:
 $$P(A) = \frac{P(A \cap B)}{P(B|A)}$$
+
+## Bayes' theorem
+A famous theorem build on conditional probability is Bayes' theorem. It's defined as follows. Suppose that a sample space $S$ is a union of mutually disjoint events $B_1$,$B_2$, $\ldots$, $B_n$, and suppose that $A$ is an event in $S$ with $P(A) \ne 0$. If k is an integer with $1 \le k \le n$, then:
+$$P(B_k|A) = \frac{P(A|B_k) \cdot P(B_k)}{P(A|B_1) \cdot P(B_1) + P(A|B_2) \cdot P(B_2) + \cdots + P(A|B_n) \cdot P(B_n)}$$
+
+The theorem can actually be directly derived from the definition of conditional probability.
+$$\begin{align*}P(B_k|A) &= \frac{P(B_k \cap A)}{P(A)} && \text{By definition of conditional probability} \\\\[10pt\] &= \frac{P(A|B_k) \cdot P(B_k)}{P(A)} && \text{Since $P(A \cap B) = P(B|A) \cdot P(A)$} \\\\[10pt\] &= \frac{P(A|B_k) \cdot P(B_k)}{P((A \cap B_1) \cup (A \cap B_2) \cup \ldots \cup (A \cap B_n))} && \text{Because A is the distinct union of $A \cap B_1$, $A \cap B_2$, $\ldots$, $A \cap B_n$} \\\\[10pt\] &= \frac{P(A|B_k) \cdot P(B_k)}{P(A \cap B_1) + P(A \cap B_2) + \ldots + P(A \cap B_n)} && \text{By the third probability axiom} \\\\[10pt\] &= \frac{P(A|B_k) \cdot P(B_k)}{P(A|B_1) \cdot P(B_1) + P(A|B_2) \cdot P(B_2) + \cdots + P(A|B_n) \cdot P(B_n)} && \text{Since $P(A \cap B) = P(B|A) \cdot P(A)$} \end{align*}$$
