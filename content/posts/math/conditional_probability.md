@@ -14,7 +14,7 @@ $$P(R_1) = P(R_2) = \frac{3}{19}$$
 To find out the probability of that both $R_1$ and $R_2$ happen ($P(R_1 \cap R_2)$) we can see the two selections as a 2-step process and consider the multiplication rule. There are $3^2 = 9$ ways to pick a studio album by Ronnie James Dio twice (desired outcomes), and there are $19^2 = 361$ ways to pick a studio album by Black Sabbath twice (total outcomes).
 $$P(R_1 \cap R_2) = \frac{3^2}{19^2} = \frac{3 \cdot 3}{19 \cdot 19} = \frac{3}{19} \cdot \frac{3}{19} = P(R_1) \cdot P(R_2)$$
 
-The fact that the first picked studio album is put back in the pile before the second selection result in that $R_1$ and $R_2$ are **independent** events. This means that the first event has no relation to the second event. The definition of independent events is as follows.
+The fact that the first picked studio album is put back in the pile before the second selection result in that $R_1$ and $R_2$ are **independent** events. This means that the first event does not affect the outcome of the second event. The definition of independent events is as follows.
 
 If $A$ and $B$ are events in a sample space $S$, then $A$ and $B$ are **independent** if, and only if
 $$P(A \cap B) = P(A) \cdot P(B)$$
@@ -37,8 +37,21 @@ If we divide each side of above equality with $P(B|A)$, we get that:
 $$P(A) = \frac{P(A \cap B)}{P(B|A)}$$
 
 ## Bayes' theorem
-A famous theorem build on conditional probability is Bayes' theorem. It's defined as follows. Suppose that a sample space $S$ is a union of mutually disjoint events $B_1$,$B_2$, $\ldots$, $B_n$, and suppose that $A$ is an event in $S$ with $P(A) \ne 0$. If k is an integer with $1 \le k \le n$, then:
+A famous theorem built on conditional probability is Bayes' theorem. It's defined as follows. Suppose that a sample space $S$ is a union of mutually disjoint events $B_1$,$B_2$, $\ldots$, $B_n$, and suppose that $A$ is an event in $S$ with $P(A) \ne 0$. If k is an integer with $1 \le k \le n$, then:
 $$P(B_k|A) = \frac{P(A|B_k) \cdot P(B_k)}{P(A|B_1) \cdot P(B_1) + P(A|B_2) \cdot P(B_2) + \cdots + P(A|B_n) \cdot P(B_n)}$$
 
 The theorem can actually be directly derived from the definition of conditional probability.
 $$\begin{align*}P(B_k|A) &= \frac{P(B_k \cap A)}{P(A)} && \text{By definition of conditional probability} \\\\[10pt\] &= \frac{P(A|B_k) \cdot P(B_k)}{P(A)} && \text{Since $P(A \cap B) = P(B|A) \cdot P(A)$} \\\\[10pt\] &= \frac{P(A|B_k) \cdot P(B_k)}{P((A \cap B_1) \cup (A \cap B_2) \cup \ldots \cup (A \cap B_n))} && \text{Because A is the distinct union of $A \cap B_1$, $A \cap B_2$, $\ldots$, $A \cap B_n$} \\\\[10pt\] &= \frac{P(A|B_k) \cdot P(B_k)}{P(A \cap B_1) + P(A \cap B_2) + \ldots + P(A \cap B_n)} && \text{By the third probability axiom} \\\\[10pt\] &= \frac{P(A|B_k) \cdot P(B_k)}{P(A|B_1) \cdot P(B_1) + P(A|B_2) \cdot P(B_2) + \cdots + P(A|B_n) \cdot P(B_n)} && \text{Since $P(A \cap B) = P(B|A) \cdot P(A)$} \end{align*}$$
+
+A typical and quite interesting example for Bayes' theorem is to consider a medical test that screens for some disease. The disease is found in 1 out of 100 000 people. Additionally, the test has a false positive rate of 2% (a person test positive, but does not actually have the disease), and a false negative rate of 0.5% (a person test negative, but actually has the disease) - What's the probability that a randomly selected person who tests positive for the disease actually has the disease?
+
+Let $A$ be the event that a person test positive for the disease, let $B_1$ be the event that a person actually has the disease, and let $B_2$ be the event that a person does not actually have the disease.
+ - $P(A|B_1) = 0.98$
+ - $P(A|B_2) = 0.02$
+ - $P(A^{\complement}|B_1) = 0.005$
+ - $P(A^{\complement}|B_2) = 0.995$
+ - $P(B_1) = 0.00001$
+ - $P(B_2) = 0.99999$
+
+What we need to find out is, given that a person tests positive, what's the probability that the person has the disease. The question can be phrased as $P(B_1|A)$, and we can use Bayes' theorem to find the answer. 
+$$\begin{align*}P(B_1|A) &= \frac{P(A|B_1) \cdot P(B_1)}{P(A|B_1) \cdot P(B_1) + P(A|B_2) \cdot P(B_2)} \\\\[10pt\] &= \frac{0.98 \cdot 0.00001}{0.98 \cdot 0.00001 + 0.02 \cdot 0.99999} \\\\[10pt\] &= \frac{0.0000098}{0.0200096} \\\\[10pt\] &= 0.00048976491 \approx 0.05\\% \end{align*}$$
