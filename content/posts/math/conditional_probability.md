@@ -1,6 +1,6 @@
 ---
 title: "Independent events and conditional probability"
-date: 2021-03-14
+date: 2021-03-15T22:00:00Z
 draft: false 
 ---
 In [Introduction to probability]({{< ref "posts/math/probability" >}}) it was described how to calculate the probability of some event. However, the post only considered the probability of a single event. What if we want to know the probability of two events?
@@ -43,15 +43,18 @@ $$P(B_k|A) = \frac{P(A|B_k) \cdot P(B_k)}{P(A|B_1) \cdot P(B_1) + P(A|B_2) \cdot
 The theorem can actually be directly derived from the definition of conditional probability.
 $$\begin{align*}P(B_k|A) &= \frac{P(B_k \cap A)}{P(A)} && \text{By definition of conditional probability} \\\\[10pt\] &= \frac{P(A|B_k) \cdot P(B_k)}{P(A)} && \text{Since $P(A \cap B) = P(B|A) \cdot P(A)$} \\\\[10pt\] &= \frac{P(A|B_k) \cdot P(B_k)}{P((A \cap B_1) \cup (A \cap B_2) \cup \ldots \cup (A \cap B_n))} && \text{Because A is the distinct union of $A \cap B_1$, $A \cap B_2$, $\ldots$, $A \cap B_n$} \\\\[10pt\] &= \frac{P(A|B_k) \cdot P(B_k)}{P(A \cap B_1) + P(A \cap B_2) + \ldots + P(A \cap B_n)} && \text{By the third probability axiom} \\\\[10pt\] &= \frac{P(A|B_k) \cdot P(B_k)}{P(A|B_1) \cdot P(B_1) + P(A|B_2) \cdot P(B_2) + \cdots + P(A|B_n) \cdot P(B_n)} && \text{Since $P(A \cap B) = P(B|A) \cdot P(A)$} \end{align*}$$
 
-A typical and quite interesting example for Bayes' theorem is to consider a medical test that screens for some disease. The disease is found in 1 out of 100 000 people. Additionally, the test has a false positive rate of 2% (a person test positive, but does not actually have the disease), and a false negative rate of 0.5% (a person test negative, but actually has the disease) - What's the probability that a randomly selected person who tests positive for the disease actually has the disease?
+A common and quite interesting example for Bayes' theorem is to consider a medical test that screens for some disease. Let's say the disease is found in 1 out of 1000 people. Additionally, the test has a false positive rate of 2% (a person test positive, but does not actually have the disease), and a false negative rate of 0.5% (a person test negative, but actually has the disease) - What's the probability that a randomly selected person who tests positive for the disease actually has the disease?
 
 Let $A$ be the event that a person test positive for the disease, let $B_1$ be the event that a person actually has the disease, and let $B_2$ be the event that a person does not actually have the disease.
- - $P(A|B_1) = 0.98$
- - $P(A|B_2) = 0.02$
- - $P(A^{\complement}|B_1) = 0.005$
- - $P(A^{\complement}|B_2) = 0.995$
- - $P(B_1) = 0.00001$
- - $P(B_2) = 0.99999$
+ - $P(A|B_1) = 0.98$ (derived from false positive rate)
+ - $P(A|B_2) = 0.02$ (derived from false positive rate)
+ - $P(A^{\complement}|B_1) = 0.005$ (derived from false negative rate)
+ - $P(A^{\complement}|B_2) = 0.995$ (derived from false negative rate)
+ - $P(B_1) = 0.001$ (derived from occurrence of disease)
+ - $P(B_2) = 0.999$ (derived from occurrence of disease)
 
 What we need to find out is, given that a person tests positive, what's the probability that the person has the disease. The question can be phrased as $P(B_1|A)$, and we can use Bayes' theorem to find the answer. 
-$$\begin{align*}P(B_1|A) &= \frac{P(A|B_1) \cdot P(B_1)}{P(A|B_1) \cdot P(B_1) + P(A|B_2) \cdot P(B_2)} \\\\[10pt\] &= \frac{0.98 \cdot 0.00001}{0.98 \cdot 0.00001 + 0.02 \cdot 0.99999} \\\\[10pt\] &= \frac{0.0000098}{0.0200096} \\\\[10pt\] &= 0.00048976491 \approx 0.05\\% \end{align*}$$
+$$\begin{align*}P(B_1|A) &= \frac{P(A|B_1) \cdot P(B_1)}{P(A|B_1) \cdot P(B_1) + P(A|B_2) \cdot P(B_2)} \\\\[10pt\] &= \frac{0.98 \cdot 0.001}{0.98 \cdot 0.001 + 0.02 \cdot 0.999} \\\\[10pt\] &= \frac{0.00098}{0.02096} \\\\[10pt\] &= 0.04675572519 \approx 4.7\\% \end{align*}$$
+
+Prior to taking the test, the probability of having the disease was 0.1%. After providing more data (by testing positive) the probability of having the disease is approximately 4.7%. Actually Bayes' theorem can be used multiple times to update the probability of some hypothesis as more data is gathered. This is widely used (and also similar to how the human mind works, constantly refining our understanding based on new experiences) and is refered to as [bayesian inference](https://en.wikipedia.org/wiki/Bayesian_inference).
+

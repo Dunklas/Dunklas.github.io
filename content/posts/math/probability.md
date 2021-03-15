@@ -1,6 +1,6 @@
 ---
 title: "Introduction to probability"
-date: 2021-03-14
+date: 2021-03-15T20:00:00Z
 draft: false 
 ---
 The idea of probability is to quantify how likely it is for some event to occur in some process or experiment. First, some definitions - The set of all possible outcomes in a process or experiment is refered to as a **sample space**, while an **event** is a subset of the sample space (i.e. one or more of the possible outcomes).
@@ -36,7 +36,7 @@ Second, the range of the probability of an event can be further narrowed to that
 $$0 \le P(E) \le 1$$
 
 Third, the probability of the complement of an event (i.e. the probability that an event does not happen) can be calculated by subtracting the probability of an event from 1. Given a sample space $S$, and that $E$ is an event in $S$.
-$$P(A^\complement) = 1 - P(A)$$
+$$P(E^\complement) = 1 - P(E)$$
 
 Fourth, the probability of a general union of two events. Note the third axiom can only be used for events that are mutually disjoint. For events that has outcomes in common, we can instead use the principles of [inclusion/exclusion]({{< ref "posts/math/counting_elements_sets#the-inclusionexclusion-rule" >}}) to determine the probability.
 $$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
