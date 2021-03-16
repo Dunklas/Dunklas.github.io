@@ -1,5 +1,5 @@
 ---
-title: "Introduction to probability"
+title: "Foundations of probability, and expected value"
 date: 2021-03-15T20:00:00Z
 draft: false 
 ---

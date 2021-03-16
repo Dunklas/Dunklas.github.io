@@ -1,5 +1,5 @@
 ---
-title: "Introduction to permutations"
+title: "Permutations"
 date: 2021-03-11
 draft: false 
 ---

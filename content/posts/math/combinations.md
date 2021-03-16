@@ -1,5 +1,5 @@
 ---
-title: "Introduction to combinations"
+title: "Combinations"
 date: 2021-03-11
 draft: false 
 ---
