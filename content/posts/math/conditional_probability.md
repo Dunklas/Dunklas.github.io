@@ -56,5 +56,18 @@ Let $A$ be the event that a person test positive for the disease, let $B_1$ be t
 What we need to find out is, given that a person tests positive, what's the probability that the person has the disease. The question can be phrased as $P(B_1|A)$, and we can use Bayes' theorem to find the answer. 
 $$\begin{align*}P(B_1|A) &= \frac{P(A|B_1) \cdot P(B_1)}{P(A|B_1) \cdot P(B_1) + P(A|B_2) \cdot P(B_2)} \\\\[10pt\] &= \frac{0.98 \cdot 0.001}{0.98 \cdot 0.001 + 0.02 \cdot 0.999} \\\\[10pt\] &= \frac{0.00098}{0.02096} \\\\[10pt\] &= 0.04675572519 \approx 4.7\\% \end{align*}$$
 
-Prior to taking the test, the probability of having the disease was 0.1%. After providing more data (by testing positive) the probability of having the disease is approximately 4.7%. Actually Bayes' theorem can be used multiple times to update the probability of some hypothesis as more data is gathered. This is widely used (and also similar to how the human mind works, constantly refining our understanding based on new experiences) and is refered to as [bayesian inference](https://en.wikipedia.org/wiki/Bayesian_inference).
+These figures might seem strange. Why isn't the probability of having the disease 98%? Since that's the true positive rate of the test. Let's break it down! Consider a group of 1000 people who take the test. How many of these people will test positive? (i.e. $P(A)$) The group that test positive is a union of two groups, people who test positive that actually has the disease, and people who test positive that does not have the disease.
+
+The probability of testing positive and actually having the disease is:
+$$\begin{align*}P(A \cap B_1) &= P(A|B_1) \cdot P(B_1) \\\\[10pt\] &= 0.98 \cdot 0.001 \\\\[10pt\] &= 0.00098\end{align*}$$
+
+The probability of testing positive and not actually having the disease is:
+$$\begin{align*} P(A \cap B_2) &= P(A|B_2) \cdot P(B_2) \\\\[10pt\] &= 0.02 \cdot 0.999 \\\\[10pt\] &= 0.01998\end{align*}$$
+
+Thus, the probability of testing positive is:
+$$\begin{align*}P(A) &= P(A \cap B_1) \cup P(A \cap B_2) \\\\[10pt\] &= P(A \cap B_1) + P(A \cap B_2) \\\\[10pt\] &= 0.00098 + 0.01998 \\\\[10pt\] &= 0.02096 \approx 2.1\\% \end{align*}$$
+
+So, in a group of 1000 people, roughly $1000 * 0.02096 = 20.96 \approx 21$ people will test positive. This means that if you test positive and actually have the disease, you are the only one in a group of 21 people who tested positive ($\frac{1}{21} \approx 4,76\\%$). It's common to think that the probability of having the disease (given a positive test) is 98.%. This is actually an instance of [base rate neglect](https://en.wikipedia.org/wiki/Base_rate_fallacy), which means that people tend to value specific information (such as test accuracy) over base rate information (rate of disease).
+
+To sum up, prior to taking the test, the probability of having the disease was 0.1%. After providing more data (by testing positive) the probability of having the disease is approximately 4.7%. Actually Bayes' theorem can be used multiple times to update the probability of some hypothesis as more data is gathered. This is widely used (and also similar to how the human mind works, constantly refining our understanding based on new experiences) and is refered to as [bayesian inference](https://en.wikipedia.org/wiki/Bayesian_inference).
 
