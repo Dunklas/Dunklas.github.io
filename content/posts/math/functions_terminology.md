@@ -1,5 +1,6 @@
 ---
 title: "Terminology of functions"
+tags: ['math', 'functions']
 date: 2021-04-17T13:00:00Z
 draft: false 
 ---

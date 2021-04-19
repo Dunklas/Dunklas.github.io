@@ -1,5 +1,6 @@
 ---
 title: "Permutations"
+tags: ['math', 'combinatorics']
 date: 2021-03-11
 draft: false 
 ---

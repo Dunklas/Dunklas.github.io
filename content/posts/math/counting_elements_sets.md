@@ -1,5 +1,6 @@
 ---
 title: "Counting number of elements in sets"
+tags: ['math', 'combinatorics']
 date: 2021-03-11
 draft: false 
 ---

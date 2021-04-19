@@ -1,5 +1,6 @@
 ---
 title: "Independent events and conditional probability"
+tags: ['math', 'probability']
 date: 2021-03-15T22:00:00Z
 draft: false 
 ---

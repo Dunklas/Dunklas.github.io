@@ -1,5 +1,6 @@
 ---
 title: "Properties of functions"
+tags: ['math', 'functions']
 date: 2021-04-18T14:00:00Z
 draft: false 
 ---

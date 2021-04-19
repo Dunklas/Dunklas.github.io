@@ -1,5 +1,6 @@
 ---
 title: "Foundations of probability, and expected value"
+tags: ['math', 'probability']
 date: 2021-03-15T20:00:00Z
 draft: false 
 ---

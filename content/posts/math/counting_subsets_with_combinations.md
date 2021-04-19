@@ -1,5 +1,6 @@
 ---
 title: "Counting subsets using r-combinations"
+tags: ['math', 'combinatorics']
 date: 2021-03-14
 draft: false 
 ---
