@@ -39,8 +39,8 @@ In the previous section we found an inverse function while proving that $g$ is o
 $$g(x) = 2x + 1$$
 $$g(y)^{-1} = \frac{y - 1}{2}$$
 
-For example, if $x = 3$, then
-$$\begin{align*} g(x) &= 2x + 1 \\\\[8pt] &= 2 \cdot 3 + 1 \\\\[8pt] &= 7 \end{align*}$$
+The image of the $3$ under $g$ is: 
+$$\begin{align*} g(3) &= 2 \cdot 3 + 1 \\\\[8pt] &= 7 \end{align*}$$
 
-If we take the output value $7$, and let $y = 7$, then
-$$\begin{align*} g(y)^{-1} &= \frac{y - 1}{2} \\\\[8pt] &= \frac{7 - 1}{2} \\\\[8pt] &= \frac{6}{2} \\\\[8pt] &= 3 \end{align*}$$
+Further, the image of $7$ under $g^{-1}$ is: 
+$$\begin{align*} g(7)^{-1} &= \frac{7 - 1}{2} \\\\[8pt] &= \frac{6}{2} \\\\[8pt] &= 3 \end{align*}$$

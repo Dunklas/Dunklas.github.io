@@ -8,7 +8,7 @@ In my job as a software developer I work with functions everyday, however I don'
 
 ---
 
-A function is a process that relates a value in some set to a **single** value in some set. For example, suppose that $S$ is the set of all strings. We can define a function $len: S \rightarrow \mathbb{Z}$ as $len(s) = \text{length of s}$. This function relates the value of $s \in S$ to the value of $\text{length of s} \in \mathbb{Z}$.
+A function is a process that relates every value in some set to a **single** value in some set. For example, suppose that $S$ is the set of all strings. We can define a function $len: S \rightarrow \mathbb{Z}$ as $len(s) = \text{length of s}$. This function relates the value of $s \in S$ to the value of $\text{length of s} \in \mathbb{Z}$.
 
 A similar function in Java would be defined as below. Note that the functions are not equal, due to two reasons: (1) since $\mathbb{Z}$ is the set of all integers, while the data type `int` is a 32-bit signed integer; (2) $S$ is the set of all strings, while the data type `String` has a limit of how long the string may be.
 ```java
@@ -16,7 +16,7 @@ int len(String s) {
     return s.length();
 }
 ```
-First, as stated above, a function relates an input value from some set, to an output value from some set. The set containing input values is refered as the *domain* ($S$ in above example), while the set containing output values is refered to as the *co-domain* ($\mathbb{Z}$ in above example).
+First, as stated above, a function relates an input value from some set, to an output value from some set. The set containing input values is refered as the *domain* ($S$ in above example), while the set containing allowed output values is refered to as the *co-domain* ($\mathbb{Z}$ in above example).
 
 When speaking about the relation between a concrete input value and its output value, we could in a programming context say that `len` returns `13` when given `Black Sabbath` as argument. In a mathematical context the same might be expressed as:
  - $13$ *is related to* $\text{Black Sabbath}$ by \$len\$
