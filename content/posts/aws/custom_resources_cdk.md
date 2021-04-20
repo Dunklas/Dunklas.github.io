@@ -1,7 +1,7 @@
 ---
 title: "Custom resources with AWS CDK"
 tags: ['aws', 'cdk']
-date: 2021-04-19T06:00:00Z
+date: 2021-04-20T05:21:00Z
 draft: false 
 ---
 CloudFormation custom resources is a great way to extend the functionality of CloudFormation. With custom resources you can run any custom logic in response to stack events. Example of use cases could be to create resources which CloudFormation has no support for, make requests to some external (non AWS) API, or maybe something not related to infrastructure at all, such as running a suite of smoke tests or seeding a database.
