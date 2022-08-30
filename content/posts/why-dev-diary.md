@@ -16,13 +16,13 @@ Below are some examples.
 
  - Things you've learned
  - Accomplishments that you're proud of
- - Thougts on dynamics within your team
+ - Thoughts on dynamics within your team
  - Sketches of ideas
  - Reasoning behind technical decisions
  - Solutions to problems that you've struggled with
 
 I think the greatest benefit of writing a diary is that you give yourself time to reflect on your daily work.
-You will think about things that does not work well and identify improvements for both yourself and your team.
+You will think about things that works less well and identify improvements for both yourself and your team.
 Sometimes we feel that we're just standing still, not developing as individuals.
 By reflecting on accomplishments and things you've learned you can more clearly see that you're actually growing as an individual, every day.
 You might reflect a lot already without writing anything about it.
