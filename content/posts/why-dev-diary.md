@@ -22,58 +22,19 @@ Below are some examples.
  - Solutions to problems that you've struggled with
 
 I think the greatest benefit of writing a diary is that you give yourself time to reflect on your daily work.
-You will find things that does not work well, and identify improvements for both yourself and your team.
-Another benefit is to actually see yourself grow (by highlighting accomplishments and learnings, WIP!)
+You will think about things that does not work well and identify improvements for both yourself and your team.
+Sometimes we feel that we're just standing still, not developing as individuals.
+By reflecting on accomplishments and things you've learned you can more clearly see that you're actually growing as an individual, every day.
+You might reflect a lot already without writing anything about it.
+That's great, but your brain might not be the most suitable storage solution in the long-term.
+Additionally, when writing thoughts or solutions related to different problems, you'll get a personal knowledge base.
+If you encounter the same issue again, you can always re-visit your old diary entries.
 
-Why? Argument for the why!
-Some note on periods when you can't be bothered
-Tooling
+So, my recommendation to you is to start write a diary.
+
+Choose whatever format that works best for you; pen and paper or some service/tool such as [Notion](https://notion.com/) or [Obsidian](https://obsidian.md/).
+If you can't be bothered to write every day, do it weekly instead.
+If you forget about it for some time, don't give up!
+Write a new entry tomorrow instead.
 
 Thanks for reading!
-
---------------
-
-What?
- - Reflection
-   - Learnings
-   - Accomplishments
-   - Team dynamics
- - Practical
-   - Solutions to problems
-   - Reasoning behind technical decisions
- - Random insights
-   - Interesting chapter in book
- - Personal knowledgebase (searchable)
- - From pragmatic programmer:
-   - Sketches of ideas
-   - Readings from meters
-   - What they did
-   - Things they learned
-   - Meeting notes
-   - What we're working on
-   - Variable values when debugging
-   - Reminders of where we put things
-   - Record wild ideas
-   - Sometimes just doodle
-
-Why?
- - By reflecting over your daily work you will:
-   - Identify improvements for you or your team
-   - Feel that you're actually growing, learning things (by highlighting them)
- - Persistence
-   - You probably reflect already, but your brain might not be the most suitable storage option
-   - By writing it, you'll have a personal knowledge base
- - From pragmatic programmer:
-   - More reliable than memory
-   - Place to store ideas that aren't immediately relevant to the task at hand
-   - Acts as a rubber duck (almost like talking to someone, chance to reflect)
-
-Pragmatic Programmer advocates pen and paper. Something special with the act of writing.
-
-Tooling?
- - I use notion
- - https://obsidian.md/ also seems like a nice option
-
-**Final thoughts**
-Not bothering to do it daily? Do it weekly!
-Forgot to do it for awhile? No worries, today is a new day
