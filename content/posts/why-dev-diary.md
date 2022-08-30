@@ -9,7 +9,7 @@ Every software developer should keep a diary.
 
 Personally I've kept one for about a year now, and I'm very content.
 During some periods I haven't bothered, and that's OK.
-You can always write a new entry tomorrow, or next week.
+I can always write a new entry tomorrow, or next week.
 
 The diary can cover a lot of different aspects from your daily work.
 Below are some examples.
@@ -20,6 +20,10 @@ Below are some examples.
  - Sketches of ideas
  - Reasoning behind technical decisions
  - Solutions to problems that you've struggled with
+
+I think the greatest benefit of writing a diary is that you give yourself time to reflect on your daily work.
+You will find things that does not work well, and identify improvements for both yourself and your team.
+Another benefit is to actually see yourself grow (by highlighting accomplishments and learnings, WIP!)
 
 Why? Argument for the why!
 Some note on periods when you can't be bothered
