@@ -15,6 +15,8 @@ After that, the task of actually resolving the problem has just been hanging aro
 When I started to work on this task, I had no prior experience of service workers.
 Therefore, I hope to cement my newly gained knowledge by summarizing my debugging journey and some learnings in this post.
 
+---
+
 First of, what is a service worker?
 Basically, it's a background job running in the context of a web application.
 It acts as a proxy between the web application and a remote web server.
@@ -71,7 +73,7 @@ However, since no change had been made to `config.json` (the configuration file 
 
 To resolve the problem, I excluded the configuration files from precaching, as well as adding code to actually install the service worker.
 
-# Final thoughts
+---
 
 Service workers is a great tool for enhancing your web page with offline capabilities.
 In our specific web app I think it's a tad overkill because it doesn't really makes sense to use it offline.
