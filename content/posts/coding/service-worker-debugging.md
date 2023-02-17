@@ -8,6 +8,10 @@ draft: false
 Recently I worked on a task related to a misconfigured service worker in a [SPA (single page application)](https://developer.mozilla.org/en-US/docs/Glossary/SPA).
 The issue was that cache invalidation of application configuration didn't work as expected.
 If a configuration value was updated, the clients kept using an old value, served by a cached version of the configuration file.
+This task was among the oldest ones in our backlog.
+When the issue first was discovered, a temporary fix was applied, by renaming the configuration file itself.
+After that, the task of actually resolving the problem has just been hanging around in the backlog for a very long time.
+
 When I started to work on this task, I had no prior experience of service workers.
 Therefore, I hope to cement my newly gained knowledge by summarizing my debugging journey and some learnings in this post.
 
