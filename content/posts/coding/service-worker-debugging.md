@@ -8,7 +8,7 @@ draft: false
 Recently I worked on a task related to a misconfigured service worker in a [SPA (single page application)](LÄNK).
 The issue was that cache invalidation of application configuration didn't work as expected.
 If a configuration value was updated, the clients kept using an old value, served by a cached version of the configuration file.
-When I started to work on this task, I had no prior experience of working with service works.
+When I started to work on this task, I had no prior experience of service workers.
 Therefore, I hope to cement my newly gained knowledge by summarizing my debugging journey and some learnings in this post.
 
 First of, what is a service worker?
@@ -33,9 +33,10 @@ It may still live and provide cached content to clients out there.
 
 I started to dig deeper into our service worker code in order to find out how it cached content.
 Turns out we used [Workbox](https://developer.chrome.com/docs/workbox/service-worker-overview/), an abstraction by Googe to make it easier to work with service workers.
-The applications build output was _precached_ and then delivered to the web application in a _cache-first_ manner.
-This means that the build output will be cached in clients during installation of the service worker, and that files always will be delivered from the cache, unless a certain file for some reason is missing in the cache.
-The build output included html, js bundles, css, images, etc, but also the configuration files which we experienced cache invalidation issues with.
+Specifically, we used a [webpack plugin](https://developer.chrome.com/docs/workbox/modules/workbox-webpack-plugin/) that generates service worker code using Workbox at build-time.
+In the generated code, the applications build output was _precached_ and then delivered to the web application in a _cache-first_ manner.
+This means that the build output will be cached in a user's browser during installation of the service worker, and that files always will be delivered from the cache, unless a certain file for some reason is missing in the cache.
+The build output includes html, js bundles, css, images, etc, as well as the configuration files which we experienced cache invalidation issues with.
 
 The next question that came to my mind was - How are the precached files updated?
 Turns out it relies on content-based hashes.
@@ -44,7 +45,29 @@ For the files that does not contain a hash, Workbox generates a _revision_ (cont
 All of the filenames and revisions are present in the service worker javascript-file.
 If a browser detect a byte-difference in the service worker code, it will attempt to install the new version (and then update its cache with the new content).
 
-Now, how come our configuration files aren't updated? :think:
+In light of that the configuration files are precached, and that it depends on content-based hashes, I continued to ponder the cache invalidation issue.
+We have several different configuration files, e.g. `config-test.json`, `config-prod.json`.
+All of these files are included in the build output, but only one of them is relevant for a specific environment.
+How does the process of getting configuration values into runtime work?
+
+After some digging, I learned that our SPA makes a request to `/config.json` in order to read configuration values.
+The CI/CD pipeline makes sure that correct configuration file is present in `/config.json`.
+In our specific case, the SPA is hosted in AWS S3, and the CI/CD pipelines runs something like `aws s3 cp build-output/config-<current-environment>.json s3://s3-web-bucket/config.json`.
+How does this affect the precaching?
+To learn about this, I ran a production build locally and emulated the behavior of our CI/CD pipeline by manually deleting and renaming configuration files.
+Now, I was finally able to reproduce the cache invalidation issue locally on my own machine.
+Success!
+
+With the improved feedback cycle from being able to reproduce the issue locally, I relatively quickly concluded what the root cause of our cache invalidation issue was.
+Amongst the environment-specific configuration files, we also had a file simply called `config.json` which was used while running the application locally.
+All of the configuration files (including `config.json`) was precached in the service worker code.
+However, due to the behavior of our CI/CD pipeline, renaming `config-<current-environment>.json` to `config.json`, the content hashes no longer matched.
+When we made a change to `config-prod.json`, we expected our web application to deliver a new version of `/config.json`.
+However, since no change had been made to `config.json` (the configuration file used while running the application locally), the content hash for that file remained the same, and the browser happily delivered the old version of the file.
+
+To resolve the problem, I excluded the configuration files from precaching, as well as adding code to actually install the service worker.
+
+# Final thoughts
 
 Learnings:
  - Always have an understanding of your applications environment (hosting, CI/CD, configuration)
