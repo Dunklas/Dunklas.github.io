@@ -1,11 +1,11 @@
 ---
 title: "Learnings from debugging a misconfigured service worker"
 tags: ["service workers", "debugging"]
-date: 2023-01-11T00:00:00Z
+date: 2023-02-17T00:00:00Z
 draft: false
 ---
 
-Recently I worked on a task related to a misconfigured service worker in a [SPA (single page application)](LÄNK).
+Recently I worked on a task related to a misconfigured service worker in a [SPA (single page application)](https://developer.mozilla.org/en-US/docs/Glossary/SPA).
 The issue was that cache invalidation of application configuration didn't work as expected.
 If a configuration value was updated, the clients kept using an old value, served by a cached version of the configuration file.
 When I started to work on this task, I had no prior experience of service workers.
@@ -14,7 +14,7 @@ Therefore, I hope to cement my newly gained knowledge by summarizing my debuggin
 First of, what is a service worker?
 Basically, it's a background job running in the context of a web application.
 It acts as a proxy between the web application and a remote web server.
-It's commonly used in [PWA's (progressive web apps)](LÄNK) to provide offline availability, but also for improved performance in general.
+It's commonly used in [PWA's (progressive web apps)](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps) to provide offline availability, but also for improved performance in general.
 The service worker itself is just a simple javascript file (commonly named `sw.js`, or `service-worker.js`).
 Service workers often use the browsers [Cache API](https://developer.mozilla.org/en-US/docs/Web/API/Cache) to cache HTTP responses.
 Either you write the code for your service worker manually, or you can have a tool such as webpack generate one for you.
@@ -69,6 +69,12 @@ To resolve the problem, I excluded the configuration files from precaching, as w
 
 # Final thoughts
 
-Learnings:
- - Always have an understanding of your applications environment (hosting, CI/CD, configuration)
- - Don't let bugs rot in your backlog! Your environment changes over time, this might make it harder to reproduce and debug
+Service workers is a great tool for enhancing your web page with offline capabilities.
+In our specific web app I think it's a tad overkill because it doesn't really makes sense to use it offline.
+In addition, I don't really see any performance gains compared to the HTTP caching provided by our content delivery network (CDN).
+
+Always strive to maintain a basic understanding of your applications environment, such as its hosting and the CI/CD pipeline.
+This knowledge will make it easier to troubleshoot obscure issues, when the need arise.
+
+Don't let bugs rot in your backlog. If they're important, give them attention as soon as possible.
+If you leave them for too long, they might multiply, or like in this case - the context changes and they're harder to reproduce.
