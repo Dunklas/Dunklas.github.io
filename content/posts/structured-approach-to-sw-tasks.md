@@ -1,7 +1,7 @@
 ---
 title: "A structured approach to complete software development tasks"
 tags: ["development", "culture"]
-date: 2023-05-20T13:24:00Z
+date: 2023-06-01T05:26:00Z
 draft: false
 ---
 Sometimes I see people (myself included) working on software development tasks in a non-structured way.
@@ -12,8 +12,6 @@ It might be hard to determine when you're done.
 You might not commit intermediary working states, and have a hard time finding what you've messed up once something is broken.
 
 In this post, I aim to explain how I like to approach tasks in a bit more structured way.
-
----
 
 First of all, you need to have a basic understanding the task.
 Read through the description.
@@ -53,8 +51,6 @@ Do you need to re-prioritize?
 Need to investigate some thing that you recently added?
 Once you're satisfied with the plan, grab the next item.
 Rinse and repeat.
-
----
 
 I like to think of this approach as applying an agile workflow to a single task.
 You start with refinement and planning - Making sure you understand the task, define sub tasks, prioritize.
