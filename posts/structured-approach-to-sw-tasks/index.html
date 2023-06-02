@@ -1,0 +1,43 @@
+<!doctype html><html lang=en-us><head><title>A Structured Approach to Work With Software Development Tasks //</title><link rel="shortcut icon" href=/favicon.ico><meta charset=utf-8><meta name=generator content="Hugo 0.112.6"><meta name=viewport content="width=device-width,initial-scale=1"><meta name=author content="Rickard Andersson"><meta name=description content><link rel=stylesheet href=/css/main.min.3c3c186cd62e563ad6e2f00a89dbee656ab912d1d46f856b5605dd0232521e2a.css><meta name=twitter:card content="summary"><meta name=twitter:title content="A Structured Approach to Work With Software Development Tasks"><meta name=twitter:description content="Sometimes I see people (myself included) working on software development tasks in a non-structured way. You might have a vague understanding of what you&rsquo;re about to accomplish. Aimlessly traversing the code base, hoping to find places that you might need to change. You instantly start to chase new ideas, while forgetting about prior (and possibly important) ideas. It might be hard to determine when you&rsquo;re done. You might not commit intermediary working states, and have a hard time finding what you&rsquo;ve messed up once something is broken."><meta property="og:title" content="A Structured Approach to Work With Software Development Tasks"><meta property="og:description" content="Sometimes I see people (myself included) working on software development tasks in a non-structured way. You might have a vague understanding of what you&rsquo;re about to accomplish. Aimlessly traversing the code base, hoping to find places that you might need to change. You instantly start to chase new ideas, while forgetting about prior (and possibly important) ideas. It might be hard to determine when you&rsquo;re done. You might not commit intermediary working states, and have a hard time finding what you&rsquo;ve messed up once something is broken."><meta property="og:type" content="article"><meta property="og:url" content="https://dunklas.github.io/posts/structured-approach-to-sw-tasks/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2023-06-01T07:31:20+02:00"><meta property="article:modified_time" content="2023-06-01T07:31:20+02:00"></head><body><header class=app-header><a href=https://dunklas.github.io><img class=app-header-avatar src=/kittelsen.jpg alt="Rickard Andersson"></a>
+<span class=app-header-title></span><p></p></header><main class=app-container><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:!0,processEnvironments:!0},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}},window.addEventListener("load",e=>{document.querySelectorAll("mjx-container").forEach(function(e){e.parentElement.classList+="has-jax"})})</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script><style type=text/css>img[src$='#center']{display:block;margin:1rem auto;max-width:100%;height:auto}</style><article class=post><header class=post-header><h1 class=post-title>A Structured Approach to Work With Software Development Tasks</h1><div class=post-meta><div><svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Jun 1, 2023</div><div><svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock"><title>clock</title><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>3 min read</div><div><svg viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tag"><title>tag</title><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg><a class=tag href=https://dunklas.github.io/tags/development/>development</a>
+<a class=tag href=https://dunklas.github.io/tags/culture/>culture</a></div></div></header><div class=post-content><p>Sometimes I see people (myself included) working on software development tasks in a non-structured way.
+You might have a vague understanding of what you&rsquo;re about to accomplish.
+Aimlessly traversing the code base, hoping to find places that you might need to change.
+You instantly start to chase new ideas, while forgetting about prior (and possibly important) ideas.
+It might be hard to determine when you&rsquo;re done.
+You might not commit intermediary working states, and have a hard time finding what you&rsquo;ve messed up once something is broken.</p><p>In this post, I aim to explain how I like to approach tasks in a bit more structured way.</p><h3 id=understanding-the-task>Understanding the task</h3><p>First of all, you need to have a basic understanding the task.
+Read through the description.
+Do some reconnaissance.
+Anything that needs to be clarified?
+Is there anything you should <strong>not</strong> do? Can you move it to a separate task?
+Discuss with your team members, your product owner or possibly your end users.
+What parts of the codebase will be involved?
+Any external dependency that will need your attention?
+<strong>Don&rsquo;t</strong> get stuck here.
+You don&rsquo;t need to work out every detail.</p><h3 id=high-level-plan>High level plan</h3><p>Next, I like to convert my understanding to a high level plan.
+Depending on the size of the task - The plan might be a set of sub tasks, a checklist, or maybe just a few steps that you keep in mind.
+I prefer to have it in written form though.
+Prioritize the plan.
+If possible, I personally prefer to start with a naive end-to-end implementation of the main chunk of the feature.
+Delaying secondary but important aspects, such as input validation, proper error handling, etc.</p><p>Now is an excellent time for a break.
+Stretch your legs, take some fresh air.</p><h3 id=execution>Execution</h3><p>Once you&rsquo;re back - Execute!
+Grab the first item from your high level plan.
+Write tests, implement.
+If your mind starts to stray towards items further down in your plan, stop!
+You&rsquo;ll deal with it later.
+If you get an idea of something important that you&rsquo;ve completely forgot to account for in the high level plan - Don&rsquo;t chase that idea right now, simply add a note of it to the bottom of your high level plan.
+If you get stuck on a non-critical aspect of the item you&rsquo;re currently working on - Make it into its own item in the high level plan and deal with it later.</p><h3 id=review--repeat>Review & Repeat</h3><p>Once you&rsquo;re done with the first item is an excellent time to commit to version control.
+This doesn&rsquo;t necessarily need to be a commit in your main branch - It could be squashed into a larger commit later as well.
+The purpose is to have a clean state before starting with the next item.
+Review your high level plan.
+Put a checkmark next to the item you just completed.
+Do you need to re-prioritize?
+Need to investigate something that you recently added?
+Once you&rsquo;re satisfied with the plan, grab the next item.
+Rinse and repeat.</p><hr><p>I like to think of this approach as applying an agile workflow to a single task.
+You start with refinement and planning - Making sure you understand the task, define sub tasks, prioritize.
+Then, you deliberately work on single items, driving them to completion before starting new ones - Just like the tasks in your sprint board.</p><p>When I use this approach I feel that it&rsquo;s easier to maintain focus, and I constantly feel a sense of progress when completing things in the high level plan.
+By delaying and taking note of new ideas, I avoid context switching while making sure that I don&rsquo;t forget important stuff.
+If you recognize your own behavior in my description of working in a non structured way - Please try this out!</p><p>Hope you found it interesting.
+Thanks for reading!</p></div><div class=post-footer></div></article></main></body></html>
