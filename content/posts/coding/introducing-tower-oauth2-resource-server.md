@@ -5,4 +5,8 @@ date: 2025-02-14T00:00:00Z
 draft: true
 ---
 
-HELO
+ - Introduction / Why
+ - What does the middleware do
+ - Example usage
+ - Link, and "call to usage / contribution"
+
