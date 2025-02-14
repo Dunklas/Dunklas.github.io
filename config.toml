@@ -1,4 +1,4 @@
-baseURL = ""
+baseURL = "https://dunklas.github.io"
 languageCode = "en-us"
 title = ""
 theme = "m10c"
