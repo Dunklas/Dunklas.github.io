@@ -6,9 +6,17 @@ draft: true
 ---
 
 # Introduction / Why
-I've recently experimented with writing a web backend using Axum framework in rust.
+The last few months I have delved into the art of writing a REST API using rust.
+Specifically, I've used the [axum](https://crates.io/crates/axum) to do so.
+At one point, it was time to add authorization.
+My case was simple.
+I use auth0 as an identity provider, and wanted to ensure that each request provided a JWT issued by a specific auth0 client.
 
-Didn't find an easy-to-use lib for managing authorization towards an external IDP.
+At the time, I was working extensively with Java and Spring in my daily job.
+In that ecosystem, I had used spring-security-oauth2-resource-server for a similar use case.
+That library makes things easy—you simply specify an issuer URL, and it takes care of discovering JWKS, handling key rotation, and validating JWTs.
+However, in Rust, I couldn't find an equivalent library that provided the same level of simplicity.
+So, I decided to build one myself!
 
 # What does the middleware do
 Authorization!
