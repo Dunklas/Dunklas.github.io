@@ -17,11 +17,13 @@ That library makes things easy—you simply specify an issuer URL, and it takes 
 However, in Rust, I couldn't find an equivalent library that provided the same level of simplicity.
 So, I decided to build one myself.
 
-# What does the middleware do
-Authorization!
-Lookup well-known/oidc-configuration
+# What does the library do
+My library is highly inspired by spring-security-oauth2-resource-server, both in terms of feature and naming.
 
-Inspired by Spring security oauth2 resource server.
+ - Automatic OIDC Discovery: The middleware fetches OpenID Connect metadata from the well-known discovery endpoint, eliminating the need for manual configuration.
+ - JWKS Rotation: It periodically retrieves JSON Web Key Sets (JWKS) from the identity provider to ensure up-to-date key validation without requiring service restarts.
+ - JWT Authorization: It validates JWTs against the expected issuer and audience, rejecting unauthorized requests automatically.
+ - Seamless Integration: Built with tower and axum, it seamlessly integrates into the Rust web ecosystem with minimal boilerplate.
 
 # Example usage
 ```rust
