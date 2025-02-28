@@ -30,7 +30,7 @@ let auth = <OAuth2ResourceServer>::builder()
         .issuer_url("https://some-identity-provider.com")
         .build()
         .await
-        .expect("Failed to build OAuth2ResourceServer");
+        .unwrap();
 
     let app = Router::new()
         .route("/", get(root))
