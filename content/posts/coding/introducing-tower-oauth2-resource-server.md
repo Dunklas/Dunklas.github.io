@@ -5,6 +5,13 @@ date: 2025-02-14T00:00:00Z
 draft: true
 ---
 
+**TLDR:** I've built a middleware for handling JWT authorization.
+It's written for the rust ecosystem and supports many popular web frameworks such as [axum](https://crates.io/crates/axum), [salvo](https://crates.io/crates/salvo/) and [tonic](https://crates.io/crates/tonic).
+It's called **tower-oauth2-resource-server** and you can find the source code on [github](https://github.com/Dunklas/tower-oauth2-resource-server).
+Feel free to use and contribute!
+
+---
+
 The last few months I have delved into the art of writing a REST API using rust.
 Specifically, I've used the [axum](https://crates.io/crates/axum) crate to do so.
 At a point, it was time to add authorization.
