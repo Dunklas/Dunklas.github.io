@@ -6,24 +6,30 @@ draft: true
 ---
 
 The last few months I have delved into the art of writing a REST API using rust.
-Specifically, I've used the [axum](https://crates.io/crates/axum) to do so.
-At one point, it was time to add authorization.
-My case was simple.
-I use auth0 as an identity provider, and wanted to ensure that each request provided a JWT issued by a specific auth0 client.
+Specifically, I've used the [axum](https://crates.io/crates/axum) crate to do so.
+At a point, it was time to add authorization.
+My use-case was simple.
+To use auth0 as an identity provider, and ensure that each request provides a valid JWT issued by a specific auth0 client.
 
 At the time, I was working extensively with Java and Spring in my daily job.
-In that ecosystem, I had used spring-security-oauth2-resource-server for a similar use case.
-That library makes things easy—you simply specify an issuer URL, and it takes care of discovering JWKS, handling key rotation, and validating JWTs.
+In that ecosystem, I used spring-security-oauth2-resource-server for a similar use case.
+That library makes things easy — you simply specify an issuer URL, and it takes care of discovering JWKS, handling key rotation, and validating JWTs.
 However, in Rust, I couldn't find an equivalent library that provided the same level of simplicity.
 So, I decided to build one myself.
 
-# What does the library do
-My library is highly inspired by spring-security-oauth2-resource-server, both in terms of feature and naming.
+To achieve this, I needed some kind of middleware that could intercept incoming requests, validate the JWT, and either allow or reject the request based on its validity.
+Middleware is a common pattern for handling cross-cutting concerns like authentication, logging, and request transformations in web frameworks.
+In Rust, many web frameworks — including Axum—are built on top of the Tower library, which provides a powerful and flexible abstraction for middleware.
 
- - Automatic OIDC Discovery: The middleware fetches OpenID Connect metadata from the well-known discovery endpoint, eliminating the need for manual configuration.
- - JWKS Rotation: It periodically retrieves JSON Web Key Sets (JWKS) from the identity provider to ensure up-to-date key validation without requiring service restarts.
- - JWT Authorization: It validates JWTs against the expected issuer and audience, rejecting unauthorized requests automatically.
- - Seamless Integration: Built with tower and axum, it seamlessly integrates into the Rust web ecosystem with minimal boilerplate.
+Tower is a modular and composable library for building network services in Rust.
+It provides a Service trait that represents an asynchronous request-response pipeline.
+Middleware in Tower is simply a layer that wraps around a service, modifying either the request, response, or both.
+Because Axum is built on Tower, we can leverage this middleware system to integrate authentication seamlessly.
+
+With this in mind, I built a library specifically for Tower-based frameworks that performs JWT validation against an OIDC provider.
+The goal was to replicate the developer experience of spring-security-oauth2-resource-server, allowing users to configure an issuer URL and have the library handle the rest—discovering the JWKS, caching keys, handling key rotation, and verifying JWTs.
+
+Since Tower is widely used beyond Axum, this approach makes the library compatible with multiple frameworks, ensuring flexibility and reusability across different Rust web applications.
 
 # Example usage
 ```rust
