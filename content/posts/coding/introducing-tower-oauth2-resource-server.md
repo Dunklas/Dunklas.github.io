@@ -30,7 +30,7 @@ It can be used for implementing middleware in both clients and servers, regardle
 Many web frameworks (including axum) uses tower instead of implementing its own middleware system.
 With that in mind, I decided to write my middleware for tower — That way it can be used in a bunch of different web frameworks.
 
-So, I hereby introduce [tower-oauth2-resource-server](https://github.com/Dunklas/tower-oauth2-resource-server)!
+So, I hereby introduce **tower-oauth2-resource-server**!
 The library is highly inspired by [Spring Security OAuth2 Resource Server](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server).
 Some of its features include:
 
@@ -42,7 +42,8 @@ Some of its features include:
 
 It should be possible to use the library together with any web framework built on top of [tower](https://crates.io/crates/tower).
 However, I've only verified that it works together with [axum](https://crates.io/crates/axum), [salvo](https://crates.io/crates/salvo/) and [tonic](https://crates.io/crates/tonic).
-You can find examples of usage for each of those frameworks in the [examples](https://github.com/Dunklas/tower-oauth2-resource-server/tree/main/examples) folder of the repository.
 
-#  Link, and "call to usage / contribution"
-You can find the repo here: https://github.com/Dunklas/tower-oauth2-resource-server
+The library is available on [crates.io](https://crates.io/crates/tower-oauth2-resource-server), and you can find the source code on [github](https://github.com/Dunklas/tower-oauth2-resource-server).
+You can find examples of usage for different web frameworks in the [examples](https://github.com/Dunklas/tower-oauth2-resource-server/tree/main/examples) folder of the repository.
+
+Feel free to use and contribute!
