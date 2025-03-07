@@ -12,9 +12,9 @@ Feel free to use and contribute!
 
 ---
 
-The last few months I have delved into the art of writing a REST API using Rust.
+Over the last few months, I've delved into the art of writing a REST API using Rust.
 Specifically, I've used the [axum](https://crates.io/crates/axum) crate to do so.
-Like in most projects, there came a time where I needed to add authorization.
+Like most projects, mine eventually needed authorization.
 A way to validate incoming JSON Web Tokens (JWTs) from an external identity provider.
 
 In my daily job (where I work with Java and Spring) my go-to-solution for authorization is to use [Spring Security OAuth2 Resource Server](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server).
@@ -26,23 +26,21 @@ My objective was to write a middleware that intercepts incoming requests, valida
 In the Rust ecosystem there is a crate called [tower](https://crates.io/crates/tower) which provides an abstraction for the concept of taking a request and returning a response.
 It can be used for implementing middleware in both clients and servers, regardless of networking protocol.
 Many web frameworks (including Axum) use Tower instead of implementing their own middleware systems.
-With that in mind, I decided to write my middleware for Tower, ensuring it could be used across multiple web frameworks without being tied to a specific one.
+With that in mind, I decided to write my middleware for Tower, ensuring it could be used across multiple web frameworks.
 
 So, I hereby introduce **tower-oauth2-resource-server**!
-The library is highly inspired by [Spring Security OAuth2 Resource Server](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server).
-Some of its features include:
+The library is highly inspired by [Spring Security OAuth2 Resource Server](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server) and some of its features include:
 
  - JWT validation for incoming HTTP requests
     - Signature matches public key from JWKS endpoint
     - Validity of `exp`, `nbf`, `iss` and `aud` claims
- - Automatic discovery of JWKS endpoint
- - Automatic JWKS rotation
+ - Automatic discovery and rotation of JWKS
  - Expose JWT claims to downstream services via a [Request extension](https://docs.rs/http/latest/http/struct.Extensions.html)
 
 It should be possible to use the library together with any web framework built on top of [tower](https://crates.io/crates/tower).
 However, I've only verified that it works together with [axum](https://crates.io/crates/axum), [salvo](https://crates.io/crates/salvo/) and [tonic](https://crates.io/crates/tonic).
 
 The library is available on [crates.io](https://crates.io/crates/tower-oauth2-resource-server), and you can find the source code on [github](https://github.com/Dunklas/tower-oauth2-resource-server).
-You can find examples of usage for different web frameworks in the [examples](https://github.com/Dunklas/tower-oauth2-resource-server/tree/main/examples) folder of the repository.
+You can find **usage examples** for different web frameworks in the [examples](https://github.com/Dunklas/tower-oauth2-resource-server/tree/main/examples) folder of the repository.
 
 Feel free to use and contribute!
