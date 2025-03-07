@@ -3,7 +3,7 @@
 Feb 17, 2023</div><div><svg class="icon icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>clock</title><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
 6 min read</div><div><svg class="icon icon-tag" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>tag</title><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83.0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
 <a class=tag href=https://dunklas.github.io/tags/service-workers/>Service Workers</a>
-<a class=tag href=https://dunklas.github.io/tags/debugging/>Debugging</a></div></div></header><div class=post-content><p>Recently I worked on a task related to a misconfigured service worker in a <a href=https://developer.mozilla.org/en-US/docs/Glossary/SPA>SPA (single page application)</a>.
+<a class=tag href=https://dunklas.github.io/tags/debugging/>Debugging</a></div></div></header><div class=post-content><p>Recently I worked on a task related to a misconfigured service worker in a <a href=https://developer.mozilla.org/en-US/docs/Glossary/SPA target=_blank rel=noopener>SPA (single page application)</a>.
 The issue was that cache invalidation of application configuration didn&rsquo;t work as expected.
 If a configuration value was updated, the clients kept using an old value, served by a cached version of the configuration file.
 This task was among the oldest ones in our backlog.
@@ -12,9 +12,9 @@ After that, the task of actually resolving the problem has just been hanging aro
 Therefore, I hope to cement my newly gained knowledge by summarizing my debugging journey and some learnings in this post.</p><hr><p>First of, what is a service worker?
 Basically, it&rsquo;s a background job running in the context of a web application.
 It acts as a proxy between the web application and a remote web server.
-It&rsquo;s commonly used in <a href=https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps>PWA&rsquo;s (progressive web apps)</a> to provide offline availability, but also for improved performance in general.
+It&rsquo;s commonly used in <a href=https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps target=_blank rel=noopener>PWA&rsquo;s (progressive web apps)</a> to provide offline availability, but also for improved performance in general.
 The service worker itself is just a simple javascript file (commonly named <code>sw.js</code>, or <code>service-worker.js</code>).
-Service workers often use the browsers <a href=https://developer.mozilla.org/en-US/docs/Web/API/Cache>Cache API</a> to cache HTTP responses.
+Service workers often use the browsers <a href=https://developer.mozilla.org/en-US/docs/Web/API/Cache target=_blank rel=noopener>Cache API</a> to cache HTTP responses.
 Either you write the code for your service worker manually, or you can have a tool such as webpack generate one for you.</p><p>My first troubleshooting step was to attempt to re-create the behavior while running the application locally.
 If a web page uses a service worker, you can see some information about it by navigating to <em>Application</em> > <em>Service Workers</em> in the developer console.
 Suprisingly, it looked like there was no service worker installed.
@@ -24,8 +24,8 @@ After a journey down our git history, I noticed that a bunch of service worker-r
 The absence of this configuration resulted in that the service worker no longer gets installed.</p><p>Great! We no longer attempt to install the misconfigured service worker, then we should be fine, right?
 Not really, just because we no longer actively install the service worker, it doesn&rsquo;t mean that the misconfigured service worker has been <em>uninstalled</em>.
 It may still live and provide cached content to clients out there.</p><p>I started to dig deeper into our service worker code in order to find out how it cached content.
-Turns out we used <a href=https://developer.chrome.com/docs/workbox/service-worker-overview/>Workbox</a>, an abstraction by Googe to make it easier to work with service workers.
-Specifically, we used a <a href=https://developer.chrome.com/docs/workbox/modules/workbox-webpack-plugin/>webpack plugin</a> that generates service worker code using Workbox at build-time.
+Turns out we used <a href=https://developer.chrome.com/docs/workbox/service-worker-overview/ target=_blank rel=noopener>Workbox</a>, an abstraction by Googe to make it easier to work with service workers.
+Specifically, we used a <a href=https://developer.chrome.com/docs/workbox/modules/workbox-webpack-plugin/ target=_blank rel=noopener>webpack plugin</a> that generates service worker code using Workbox at build-time.
 In the generated code, the applications build output was <em>precached</em> and then delivered to the web application in a <em>cache-first</em> manner.
 This means that the build output will be cached in a user&rsquo;s browser during installation of the service worker, and that files always will be delivered from the cache, unless a certain file for some reason is missing in the cache.
 The build output includes html, js bundles, css, images, etc, as well as the configuration files which we experienced cache invalidation issues with.</p><p>The next question that came to my mind was - How are the precached files updated?
