@@ -1,8 +1,8 @@
 ---
 title: "Introducing tower-oauth2-resource-server"
 tags: ["rust", "tower", "OAuth", "jwt", "authorization"]
-date: 2025-02-14T00:00:00Z
-draft: true
+date: 2025-03-07T00:00:00Z
+draft: false
 ---
 
 **TLDR:** I've built a middleware for handling JWT authorization.
