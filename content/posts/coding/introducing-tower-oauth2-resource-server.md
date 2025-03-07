@@ -12,33 +12,32 @@ Feel free to use and contribute!
 
 ---
 
-The last few months I have delved into the art of writing a REST API using rust.
+The last few months I have delved into the art of writing a REST API using Rust.
 Specifically, I've used the [axum](https://crates.io/crates/axum) crate to do so.
-At a point it was time to add authorization.
-My scenario was simple.
-To ensure that each request provides a valid JSON Web Token (JWT) issued by an external identity provider.
+Like in most projects, there came a time where I needed to add authorization.
+A way to validate incoming JSON Web Tokens (JWTs) from an external identity provider.
 
-At the time, I was working extensively with Java and Spring in my daily job.
-In that ecosystem, I used [Spring Security OAuth2 Resource Server](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server) for a similar use case.
+In my daily job (where I work with Java and Spring) my go-to-solution for authorization is to use [Spring Security OAuth2 Resource Server](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server).
 That library makes things easy — you simply specify an issuer URL, and it takes care of discovering JSON Web Key Sets (JWKS), handling key rotation, and validating JWTs.
-However, in Rust, I couldn't find an equivalent library that provided the same level of simplicity.
+However, I couldn't find an equivalent Rust library that offered the same level of simplicity.
 So, I decided to build one myself.
 
-My objective was to write a middleware that intercept incoming requests, validate its JWT and either allow or reject the request based on the JWTs validity.
+My objective was to write a middleware that intercepts incoming requests, validates their JWTs, and either allows or rejects them based on validity.
 In the Rust ecosystem there is a crate called [tower](https://crates.io/crates/tower) which provides an abstraction for the concept of taking a request and returning a response.
 It can be used for implementing middleware in both clients and servers, regardless of networking protocol.
-Many web frameworks (including axum) uses tower instead of implementing its own middleware system.
-With that in mind, I decided to write my middleware for tower — That way it can be used in a bunch of different web frameworks.
+Many web frameworks (including Axum) use Tower instead of implementing their own middleware systems.
+With that in mind, I decided to write my middleware for Tower, ensuring it could be used across multiple web frameworks without being tied to a specific one.
 
 So, I hereby introduce **tower-oauth2-resource-server**!
 The library is highly inspired by [Spring Security OAuth2 Resource Server](https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server).
 Some of its features include:
 
- - JWT validation of incoming HTTP requests
+ - JWT validation for incoming HTTP requests
     - Signature matches public key from JWKS endpoint
     - Validity of `exp`, `nbf`, `iss` and `aud` claims
  - Automatic discovery of JWKS endpoint
- - Makes JWT claims available to downstream services via a [Request extension](https://docs.rs/http/latest/http/struct.Extensions.html)
+ - Automatic JWKS rotation
+ - Expose JWT claims to downstream services via a [Request extension](https://docs.rs/http/latest/http/struct.Extensions.html)
 
 It should be possible to use the library together with any web framework built on top of [tower](https://crates.io/crates/tower).
 However, I've only verified that it works together with [axum](https://crates.io/crates/axum), [salvo](https://crates.io/crates/salvo/) and [tonic](https://crates.io/crates/tonic).
